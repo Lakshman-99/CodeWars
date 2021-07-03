@@ -1,3 +1,5 @@
+{% load socialaccount %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,11 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}">
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
   <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
 
@@ -18,60 +23,92 @@
 </head>
 <body>
 
+  <br>
 
-
-    <header class="jumbotron fixed-top">
-        <div class="container">
-            <div class="row row-header text-center align-items-center ">
-                <div class="head col-12 col-sm-8">
-                    <h1>Code <img class="img-fluid imag" src="{% static 'image/sword.png' %}" alt="">Wars</h1>
-
-                </div>
-                <div class="col col-sm-4">
-                  <a href="http://localhost:3000/"><button onclick="index.html" class="btn" type="button" name="button">Login</button></a>
-                  <a href="http://localhost:3000/"><button onclick="index.html" class="btn" type="button" name="button">signup</button></a>
+  <header class="jumbotron fixed-top">
+      <div class="container">
+          <div class="row row-header">
+              <div class="col-md-8 col-xs-6">
+                <a href="http://localhost:8000" class="in"><h1 id="head" >Code<img id="imag" class="img-fluid" src="{% static 'image/sword.png' %}" alt="">Wars</h1></a>
 
 
                 </div>
-            </div>
-        </div>
+                <div class="col-md-4 col-xs-4 text-right align-self-center ">
+                  {% if user.is_authenticated %}
+                  <a href="http://localhost:8000/accounts/logout"><button  class="btn float-right" type="button" name="button">Logout</button></a>
+                  {% else %}
+                  <a href="http://localhost:8000/accounts/login"><button class="btn" type="button" name="button">Login</button></a>
+                  <a href="http://localhost:8000/accounts/signup"><button class="btn" type="button" name="button">signup</button></a>
+                  {% endif %}
+                </div>
+              </div>
+          </div>
     </header>
 
-    <div class="container">
-        <div class="row row-content align-items-center">
-              <div class="col-12 col-sm-8 ">
-                    <h2>CODING CHALLENGE<br>1 v 1</h2>
+    <br><br>
+
+    <div class="container" style="border-bottom: 1px ridge;">
+        <div class="row row-content align-items-end">
+              <div class="col-md-8 col-xs-6 ">
+                      <h2>CODING CHALLENGE<br>1 v 1</h2>
+                      <p> Challenging 1 vs 1 coding comptetion  </p>
+                        <ul style="font-size: 17px;">
+                          <li>Friendly challenge.</li>
+                          <li>Supports multiple languages.</li>
+                          <li>Match with same difficulty.</li>
+                        </ul>
+                        <p> What more, Signup and start competing!! </p>
+                        {% if user.is_authenticated %}
+                        <ul><a href="http://localhost:8000"><button class="btn" type="button" name="button">Start</button></a></ul>
+                        {% else %}
+                        <a href="http://localhost:8000/accounts/login"><button class="btn" type="button" name="button">Start</button></a>
+                        {% endif %}
+                </div>
+              <div class="col-md-4 col-xs-4">
+                  <img class="img-fluid img-resp gif " src="{% static 'image/comp.png' %}" alt="">
               </div>
-              <div class="col col-sm-4 align-self-center">
-                    <img class="img-fluid gif" src="{% static 'image/programming.gif' %}" alt="">
-              </div>
-       </div>
+         </div>
      </div>
 
-     <div class="container">
-         <div class="row row-content align-items-center">
-               <div class="col-12 col-sm-7 code">
-                     <p> Challenging 1 vs 1 coding comptetion  </p>
-                     <div class="col-12 col-sm-5">
-                       <ul>
-                         <li>Friendly challenge</li>
-                         <li>Supports multiple languages</li>
-                         <li>Match with same difficulty</li>
 
-                       </ul>
+      <div class="container eff" style="border-bottom: 1px ridge;">
+          <div class="row row-content align-items-center">
+                <div class="col-md-6 col-xs-4">
+                        <img class="img-fluid" src="{% static 'image/programming.gif' %}" alt="" style="border: 3px solid #bb86fc;">
+                </div>
+                <div class="col-md-6 col-xs-6">
+                    <h2>ONLINE EDITOR</h2>
+                    <ul style="font-size: 17px;">
+                      <li>User friendly online code editor.</li>
+                      <li>Has autocomplete feature.</li>
+                      <br>
+                      <a href="http://localhost:8000/edi"><button class="btn" type="button" name="button">Go to editor</button></a>
 
-                     </div>
-                     <div class="">
-                       <p> What more, Signup and start competing </p>
 
-                     </div>
-               </div>
+                    </ul>
+                </div>
+           </div>
+       </div>
+
+       <div class="container efe" style="border-bottom: 1px ridge;">
+           <div class="row row-content align-items-center">
+                 <div class="col-md-6 col-xs-4 ">
+                   <h2  style="text-align: left;">PRACTICE</h2>
+                   <ul style="font-size: 17px;">
+                     <li>Improve your knowledge.</li>
+                     <li>Make your fundamentals strong.</li>
+                     <br>
+                     <a href="http://localhost:8000"><button class="btn" type="button" name="button">Practice now</button></a>
+
+
+                   </ul>
+                  </div>
+                 <div class="col-md-6 col-xs-6">
+                     <img class="img-fluid" src="{% static 'image/code.gif' %}" alt="" style="border: 3px solid #bb86fc;">
+
+                 </div>
+            </div>
         </div>
-      </div>
-
-
-
-
 
 
 
@@ -79,7 +116,7 @@
       <div class="container">
         <div class=" row justify-content-center">
           <div class="col-auto">
-            <p class="foot"> @2021 Copyright </p>
+            <p class="foot"> ©2021 Copyright </p>
 
           </div>
 

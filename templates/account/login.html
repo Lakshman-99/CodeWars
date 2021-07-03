@@ -1,0 +1,60 @@
+{% load i18n %}
+{% load account socialaccount %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+<script src="https://kit.fontawesome.com/9f94d8b3b2.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
+
+<script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+</script>
+
+
+<div class="container">
+    <div class="row">
+      <a href="http://localhost:8000" class="in"><h1 id="head" >Code<img id="imag" class="img-fluid" src="{% static 'image/sword.png' %}" alt="">Wars</h1></a>
+
+        <div class="col-md-6">
+
+            <div class="card">
+                <form class="box" method="POST" action="{% url 'account_login' %}">
+                    <h1>Login</h1>
+                    <p class="text-muted"> Please enter your login and password!</p>
+                    <div class="col-md-12">
+                        <ul class="social-network social-circle">
+                            <li><a href="http://localhost:8000/accounts/facebook/login" class="icoFacebook" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="http://localhost:8000/accounts/google/login" class="icoGoogle" title="Google +"><i class="fab fa-google"></i></a></li>
+                        </ul>
+                    </div>
+                    {% csrf_token %}
+                    {% for non_field_error in form.non_field_errors %}
+                        <p class="help is-danger">{{ non_field_error }}</p>
+                    {% endfor %}
+                    {% for field in form %}
+                        {{field}}
+                        {% for error in field.errors %}
+                            <p class="help is-danger">{{ error }}</p>
+                        {% endfor %}
+                    {% endfor %}
+                    <p class="text-muted">remember me</p>
+                    {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                    {% endif %}
+                    <a class="text-muted" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a><br><br>
+                    <button class="primaryAction btn" type="submit">{% trans "Sign In" %}</button><br>
+                    <br>
+
+                    <p  class='text-muted'>Don't have an account?, <a  class="sig text-muted" href="{% url 'account_signup' %}">Sign Up</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

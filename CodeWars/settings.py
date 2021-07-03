@@ -41,7 +41,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'codechallenge',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
 ]
 
 MIDDLEWARE = [
@@ -72,6 +78,11 @@ TEMPLATES = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
 WSGI_APPLICATION = 'CodeWars.wsgi.application'
 
 
@@ -85,6 +96,7 @@ DATABASES = {
     }
 }
 
+#ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -104,6 +116,20 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+SITE_ID = 2
+LOGIN_REDIRECT_URL = '/'
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
@@ -126,3 +152,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     static
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
