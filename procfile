@@ -1,1 +1,1 @@
-web: gunicorn CodeWars.wsgi
+web: gunicorn kodewars.wsgi
