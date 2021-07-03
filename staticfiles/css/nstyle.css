@@ -1,0 +1,85 @@
+#imag {
+  width: 15%;
+  height: 100px;
+  transition: 0.3s;
+  transform-origin: right;
+}
+
+
+#head {
+  font-family: 'Metal Mania' ,sans-serif;
+  font-size: 50px;
+  transition: 0.3s;
+}
+
+.row-header {
+  margin: 0 auto;
+}
+
+.row-content {
+  margin: 0 auto;
+  padding: 50px 0px 50px 0px;
+  min-height: 500px;
+  color: #bb86fc;
+}
+
+
+p{
+  font-family: 'Titillium Web', sans-serif;
+font-size: 25px;
+padding-top: 42px;
+}
+h2{
+font-family: 'Oswald', sans-serif;
+
+font-size: 81px;
+font-weight: 900;
+text-align: center;
+position: relative;
+
+}
+.jumbotron {
+  padding: 7px 30px 7px 30px;
+  background: #0E100E;
+    margin: 0px auto;
+  color: #bb86fc  ;
+  transition: 0.3s;
+}
+body {
+  padding: 50px 0px 0px 0px;
+  background-color: #141516;
+
+}
+.btn {
+  border-radius: 70px;
+border:3px solid #bb86fc;
+cursor: pointer;
+  font-family: 'Bungee Inline', cursive;
+  color: #ffffff;
+  font-size: 13px;
+  background: #000000;
+  padding: 7px 12px 7px 12px;
+}
+.btn:hover {
+  background:black;
+  color: #bb86fc;
+  text-decoration: none;
+}
+
+.eff,.efe {
+  opacity: 0;
+  transform: scale(0.1);
+  transition: 1s;
+}
+
+.active {
+  opacity: 1;
+  transform: scale(1);
+
+}
+a.in {
+  color: #bb86fc;
+}
+a.in:hover {
+  text-decoration: none;
+}
