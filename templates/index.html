@@ -29,16 +29,16 @@
       <div class="container">
           <div class="row row-header">
               <div class="col-md-8 col-xs-6">
-                <a href="http://localhost:8000" class="in"><h1 id="head" >Code<img id="imag" class="img-fluid" src="{% static 'image/sword.png' %}" alt="">Wars</h1></a>
+                <a href="{% url 'index' %}" class="in"><h1 id="head" >Code<img id="imag" class="img-fluid" src="{% static 'image/sword.png' %}" alt="">Wars</h1></a>
 
 
                 </div>
                 <div class="col-md-4 col-xs-4 text-right align-self-center ">
                   {% if user.is_authenticated %}
-                  <a href="http://localhost:8000/accounts/logout"><button  class="btn float-right" type="button" name="button">Logout</button></a>
+                  <a href="{% url 'account_logout'%}"><button  class="btn float-right" type="button" name="button">Logout</button></a>
                   {% else %}
-                  <a href="http://localhost:8000/accounts/login"><button class="btn" type="button" name="button">Login</button></a>
-                  <a href="http://localhost:8000/accounts/signup"><button class="btn" type="button" name="button">signup</button></a>
+                  <a href="{% url 'account_login'%}"><button class="btn" type="button" name="button">Login</button></a>
+                  <a href="{% url 'account_signup'%}"><button class="btn" type="button" name="button">signup</button></a>
                   {% endif %}
                 </div>
               </div>
@@ -59,9 +59,9 @@
                         </ul>
                         <p> What more, Signup and start competing!! </p>
                         {% if user.is_authenticated %}
-                        <ul><a href="http://localhost:8000"><button class="btn" type="button" name="button">Start</button></a></ul>
+                        <ul><a href=""><button class="btn" type="button" name="button">Start</button></a></ul>
                         {% else %}
-                        <a href="http://localhost:8000/accounts/login"><button class="btn" type="button" name="button">Start</button></a>
+                        <a href="{% url 'account_login'%}"><button class="btn" type="button" name="button">Start</button></a>
                         {% endif %}
                 </div>
               <div class="col-md-4 col-xs-4">
@@ -82,7 +82,7 @@
                       <li>User friendly online code editor.</li>
                       <li>Has autocomplete feature.</li>
                       <br>
-                      <a href="http://localhost:8000/edi"><button class="btn" type="button" name="button">Go to editor</button></a>
+                      <a href="{% url 'edi' %}"><button class="btn" type="button" name="button">Go to editor</button></a>
 
 
                     </ul>
@@ -98,7 +98,7 @@
                      <li>Improve your knowledge.</li>
                      <li>Make your fundamentals strong.</li>
                      <br>
-                     <a href="http://localhost:8000"><button class="btn" type="button" name="button">Practice now</button></a>
+                     <a href=""><button class="btn" type="button" name="button">Practice now</button></a>
 
 
                    </ul>
