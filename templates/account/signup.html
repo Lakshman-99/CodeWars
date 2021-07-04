@@ -30,7 +30,7 @@
                     <div class="col-md-12">
                         <ul class="social-network social-circle">
                             <li><a href='{% provider_login_url "facebook" method="oauth2" %}' class="icoFacebook" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="{% url 'google' %}" class="icoGoogle" title="Google +"><i class="fab fa-google"></i></a></li>
+                            <li><a href="{% provider_login_url 'google' %}" class="icoGoogle" title="Google +"><i class="fab fa-google"></i></a></li>
                         </ul>
                     </div>
                     {% csrf_token %}
