@@ -1,5 +1,6 @@
 {% load i18n %}
 {% load account socialaccount %}
+{% providers_media_js %}
 
 {% load static %}
 
@@ -24,18 +25,19 @@
         <div class="col-md-6">
 
             <div class="card">
-                <form class="box" method="POST" action="{% url 'account_signup' %}">
+                <form class="box" method="POST" action="{% url 'signup' %}">
                     <h1>Create Account</h1>
                     <p class="text-muted"> Please enter your details!</p>
                     <div class="col-md-12">
                         <ul class="social-network social-circle">
-                            <li><a href="http://localhost:8000/accounts/facebook/login" class="icoFacebook" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="http://localhost:8000/accounts/google/login" class="icoGoogle" title="Google +"><i class="fab fa-google"></i></a></li>
+                            <li><a href='{% provider_login_url "facebook" method="js_sdk" %}' class="icoFacebook" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="{% url 'google' %}" class="icoGoogle" title="Google +"><i class="fab fa-google"></i></a></li>
                         </ul>
                     </div>
                     {% csrf_token %}
                     {% for non_field_error in form.non_field_errors %}
                         <p class="help is-danger">{{ non_field_error }}</p>
+                        {% csrf_token %}
                     {% endfor %}
                     {% for field in form %}
                         {{field}}

@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib import sites
 from django.urls import path, include
 from django.views.generic import TemplateView
 from codechallenge import views as v1
@@ -24,5 +25,9 @@ urlpatterns = [
     path('edi/',v1.editor,name='edi'),
     path('edi/runcode/',v1.code),
     path('index/',v1.index),
-    path('accounts/', include('allauth.urls'))
+    path('account/', include('allauth.urls')),
+    path('account/login/', v1.login, name="login"),
+    path('account/signup/',v1.signup, name="signup"),
+    path('account/google/login', v1.gg, name="google"),
+    #path('account/logout/',v1)
 ]
