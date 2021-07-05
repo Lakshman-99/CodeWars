@@ -28,6 +28,6 @@ urlpatterns = [
     path('account/', include('allauth.urls')),
     path('account/login/', v1.login, name="login"),
     path('account/signup/',v1.signup, name="signup"),
-    path('account/google/login', v1.gg, name="google"),
+    path('practice/', v1.practice, name="practice"),
     #path('account/logout/',v1)
 ]

@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import CreateUserForm
 import sys,os
+import subprocess
 
 
 def index(request):
@@ -14,9 +15,6 @@ def index(request):
 
 def editor(request):
     return render(request, 'editor.html')
-
-def gg(request):
-    pass
 
 def signup(request):
     if request.user.is_authenticated:
@@ -78,41 +76,46 @@ def code(request):
                 coding = open('program.c','a')
                 coding.write(code)
                 coding.close()
-                os.system('gcc program.c')
-                os.system('type nul > output.txt')
-                os.system('a.exe>output.txt')
-                output = open('output.txt', 'r').read()
-
+                p1 = subprocess.run('tdm/bin/gcc program.c -o program.exe', capture_output=True, text=True, shell=False)
+                if(p1.stderr):
+                    result_compiler = str(p1.stderr)
+                    output=result_compiler
+                else:
+                    p2 = subprocess.run('program.exe', capture_output=True, shell=False)
+                    output=p2.stdout.decode("UTF-8")
 
             elif(lang == 'cpp'):
                 coding = open('program.cpp','a')
                 coding.write(code)
                 coding.close()
-                os.system('g++ program.cpp')
-                os.system('output.txt')
-                os.system('a.exe>output.txt')
-                output = open('output.txt', 'r').read()
+                p1 = subprocess.run('tdm/bin/g++ program.cpp -o program.exe', capture_output=True, text=True, shell=False)
+                if(p1.stderr):
+                    result_compiler = str(p1.stderr)
+                    output=result_compiler
+                else:
+                    p2 = subprocess.run('program.exe', capture_output=True, shell=False)
+                    output=p2.stdout.decode("UTF-8")
 
             else:
                 coding = open('program.js','a')
                 coding.write(code)
                 coding.close()
-                os.system('output.txt')
-                os.system('node program.js>output.txt')
-                output = open('output.txt', 'r').read()
-
+                p1 = subprocess.run('node program.js ', capture_output=True, text=True, shell=False)
+                if(p1.stderr):
+                    result_compiler = str(p1.stderr)
+                    output=result_compiler
+                else:
+                    output=p1.stdout
 
             try:
                 os.system('del program.cpp')
                 os.system('del program.c')
                 os.system('del program.js')
-                os.system('del output.txt')
                 os.system('del file.txt')
-                os.system('del a.exe')
+                os.system('del program.exe')
 
             except:
                 print("")
-
 
 
         except Exception as e:
@@ -122,3 +125,6 @@ def code(request):
 
 
     return HttpResponse(output)
+
+def practice(request):
+    return render(request, 'practice.html')

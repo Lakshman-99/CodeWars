@@ -1,0 +1,130 @@
+#imag {
+  width: 15%;
+  height: 100px;
+  transition: 0.3s;
+  transform-origin: right;
+}
+
+
+#head {
+  font-family: 'Metal Mania' ,sans-serif;
+  font-size: 50px;
+  transition: 0.3s;
+}
+
+.row-header {
+  margin: 0 auto;
+}
+body {
+  padding: 50px 40px 0px 40px;
+  background-color: #141516;
+
+}
+.jumbotron {
+  padding: 7px 30px 7px 30px;
+  background: #0E100E;
+    margin: 0px auto;
+  color: #bb86fc  ;
+  transition: 0.3s;
+}
+.btn {
+  border-radius: 70px;
+border:3px solid #bb86fc;
+cursor: pointer;
+  font-family: 'Bungee Inline', cursive;
+  color: #ffffff;
+  font-size: 13px;
+  background: #000000;
+  padding: 7px 12px 7px 12px;
+}
+.btn:hover {
+  background:black;
+  color: #bb86fc;
+  text-decoration: none;
+}
+a.in {
+  color: #bb86fc;
+}
+a.in:hover {
+  text-decoration: none;
+}
+#cont {
+  background-color:	#232b2b;
+  padding: 30px 40px 30px 40px;
+  color: #bb86fc;
+  border-radius: 20px;
+  font-family: 'Bungee Inline', cursive;
+  font-size: 16px;
+
+}
+
+#cont {
+  background-color:	#232b2b;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #0E100E;
+  color: #bb86fc;
+  text-align: center;
+  padding-top: 10px;
+}
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden;
+  padding-top: 200px;
+  transition: 0.5s;
+}
+.side {
+  margin-left: 25%;
+  color: #bb86fc;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 130px;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 20px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+#filter {
+  font-family: 'Metal Mania' ,sans-serif;
+  font-size: 22px;
+  color: #bb86fc;
+  position: relative;
+  left: 10px;
+  text-decoration: none;
+}
+#
