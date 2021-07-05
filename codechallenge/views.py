@@ -120,7 +120,7 @@ def code(request):
 
         except Exception as e:
             # to return error in the code
-            sys.stdout = original_stdout
+            #sys.stdout = original_stdout
             output = e
 
 
