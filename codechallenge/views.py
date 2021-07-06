@@ -9,6 +9,9 @@ from .forms import CreateUserForm
 import sys,os
 import subprocess
 
+Base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
 
 def index(request):
     return render(request, 'index.html')
@@ -76,7 +79,8 @@ def code(request):
                 coding = open('program.c','a')
                 coding.write(code)
                 coding.close()
-                p1 = subprocess.run('tdm/bin/gcc program.c -o program.exe', capture_output=True, text=True, shell=False)
+                gcc = os.path.join(Base_dir, 'app')
+                p1 = subprocess.run(f'{gcc}/tdm/bin/gcc program.c -o program.exe', capture_output=True, text=True, shell=False)
                 if(p1.stderr):
                     result_compiler = str(p1.stderr)
                     output=result_compiler
@@ -88,7 +92,8 @@ def code(request):
                 coding = open('program.cpp','a')
                 coding.write(code)
                 coding.close()
-                p1 = subprocess.run('tdm/bin/g++ program.cpp -o program.exe', capture_output=True, text=True, shell=False)
+                gcc = os.path.join(Base_dir, 'app')
+                p1 = subprocess.run(f'{gcc}/tdm/bin/g++ program.cpp -o program.exe', capture_output=True, text=True, shell=False)
                 if(p1.stderr):
                     result_compiler = str(p1.stderr)
                     output=result_compiler
