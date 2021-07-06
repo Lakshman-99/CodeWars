@@ -79,7 +79,7 @@ def code(request):
                 coding = open('program.c','a')
                 coding.write(code)
                 coding.close()
-                gcc = os.path.join(Base_dir, 'app')
+                gcc = Base_dir
                 p1 = subprocess.run(f'{gcc}/tdm/bin/gcc program.c -o program.exe', capture_output=True, text=True, shell=False)
                 if(p1.stderr):
                     result_compiler = str(p1.stderr)
@@ -92,7 +92,7 @@ def code(request):
                 coding = open('program.cpp','a')
                 coding.write(code)
                 coding.close()
-                gcc = os.path.join(Base_dir, 'app')
+                gcc = Base_dir
                 p1 = subprocess.run(f'{gcc}/tdm/bin/g++ program.cpp -o program.exe', capture_output=True, text=True, shell=False)
                 if(p1.stderr):
                     result_compiler = str(p1.stderr)
